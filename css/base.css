@@ -177,6 +177,14 @@ input.danger {
   color: var(--light);
 }
 
+.player.active {
+  background: var(--primary);
+}
+
+.player__name.active {
+  background: var(--primary);
+}
+
 .player > * {
   background: var(--dark-1);
 }

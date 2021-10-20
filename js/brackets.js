@@ -97,14 +97,14 @@ const populateContainerWithRandomPlayers = (count, container) => {
     let randomIndex = getRandomIndexFrom(names);
     let randomName = names[randomIndex];
 
-    uniqueNumbers.add(randomIndex);
-
     // Generate random name again if the name has
     // already exist in uniqueNumbers
     if (uniqueNumbers.has(randomIndex)) {
       randomIndex = getRandomIndexFrom(names);
       randomName = names[randomIndex];
     }
+    uniqueNumbers.add(randomIndex);
+
     container.appendChild(createPlayerElement(randomName, 0));
   }
 }
@@ -114,7 +114,7 @@ const createPlayerElement = (name, score) => {
   player.classList.add('player');
 
   player.innerHTML = `
-    <div class="player__name">${name}</div>
+    <div class="player__name" data-name="${name}">${name}</div>
     <div class="player__score">${score}</div>
   `;
 
@@ -132,6 +132,69 @@ const showBrackets = (participantCount) => {
 //
 
 // EVENT LISTENERS
+brackets.addEventListener('mouseover', (e) => {
+  if (
+    e.target.classList.contains('player')
+  ) {
+    const name = e.target.firstElementChild.dataset.name;
+    const mathcedPlayers = (
+      document.querySelectorAll(`[data-name='${name}']`)
+    )
+
+    mathcedPlayers.forEach(player => {
+      player.closest('.player').classList.add('active');
+      player.classList.add('active');
+    })
+  }
+
+  if (
+    e.target.classList.contains('player__name') ||
+    e.target.classList.contains('player__score') 
+  ) {
+    const name = e.target.closest('.player').firstElementChild.dataset.name;
+    const mathcedPlayers = (
+      document.querySelectorAll(`[data-name='${name}']`)
+    )
+
+    mathcedPlayers.forEach(player => {
+      player.closest('.player').classList.add('active');
+      player.classList.add('active');
+    })
+  }
+})
+
+brackets.addEventListener('mouseout', (e) => {
+  if (
+    e.target.classList.contains('player')
+  ) {
+    console.log(e.target)
+    const name = e.target.firstElementChild.dataset.name;
+    const mathcedPlayers = (
+      document.querySelectorAll(`[data-name='${name}']`)
+    )
+
+    mathcedPlayers.forEach(player => {
+      player.closest('.player').classList.remove('active');
+      player.classList.remove('active');
+    })
+  }
+
+  if (
+    e.target.classList.contains('player__name') ||
+    e.target.classList.contains('player__score') 
+  ) {
+    const name = e.target.closest('.player').firstElementChild.dataset.name;
+    const mathcedPlayers = (
+      document.querySelectorAll(`[data-name='${name}']`)
+    )
+
+    mathcedPlayers.forEach(player => {
+      player.closest('.player').classList.remove('active');
+      player.classList.remove('active');
+    })
+  }
+})
+
 editBracketButton.addEventListener('click', () => {
   participantForm.classList.remove('hidden');
   editBracketButton.classList.add('hidden');
