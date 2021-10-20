@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
+:root {
+  --dark:rgb(36, 35, 35);
+  --dark-1:rgb(66, 65, 65);
+  --light: rgb(236, 236, 236);
+  --light-1: rgb(167, 166, 166);
+  --primary: rgb(231, 99, 46);
+  --danger: rgb(231, 46, 46);
+  --success: rgb(98, 231, 46);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  background-color: var(--dark);
+  color: var(--light);
+  font-family: 'Oxygen', Arial, sans-serif;
+}
+
+h4, h5, h6 {
+  font-family: 'Cairo';
+}
+
+input {
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid var(--primary);
+  padding: 0.7rem;
+  transition: all 0.3s ease-out;
+}
+
+input:focus {
+  font-size: 1.5rem;
+}
+
+input.success {
+  border-color: var(--success);
+}
+
+input.danger {
+  border-color: var(--danger);
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  border: none;
+  background: var(--primary);
+  border-radius: 5px;
+  font-weight: 800;
+  font-family: 'Cairo';
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+  z-index: 1;
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--dark-1);
+}
+
+.btn--outline:hover {
+  background: var(--dark-1);
+}
+
+.btn:hover {
+  filter: brightness(120%);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.20);
+}
+
+.btn.disabled {
+  cursor: not-allowed;
+  filter: brightness(50%);
+}
+
+.btn.disabled:hover {
+  filter: brightness(50%);
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.app__title {
+  position: absolute;
+  top: 5%;
+  text-align: center;
+  animation: fadeOut 1s ease-out 2.5s forwards;
+}
+
+.main__title {
+  margin-bottom: 1rem;
+}
+
+.sub__title {
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.participant-form {
+  display: flex;
+  flex-flow: column;
+  margin-top: 8rem;
+}
+
+.form__input {
+  margin: 0.5rem 0 1rem 0;
+}
+
+.constraints {
+  display: flex;
+  justify-content: space-between;
+  font-style: italic;
+}
+
+.constraints > * {
+  color: var(--light-1);
+}
+
+.submit__btn {
+  align-self: center;
+  margin-top: 2rem;
+}
+
+.apply-shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.buttons > * {
+  margin: 0 1rem;
+}
+
+.brackets {
+  display: flex;  
+  align-items: flex-start;
+  width: 80%;
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+.players-r1 {
+  flex-basis: 10%;
+}
+
+.players-r1 .player:nth-child(2n) {
+  margin-bottom: 2rem;
+}
+
+.players-r2 {
+  margin-top: 3.4rem;
+}
+
+.players-r2 .player:nth-child(2n) {
+  margin-bottom: 8rem;
+}
+
+.players-r3 {
+  margin-top: 9.8rem;
+}
+
+.players-r3 .player:nth-child(2n) {
+  margin-bottom: 20.5rem;
+}
+
+.player {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  background: var(--dark-1);
+  color: var(--light);
+}
+
+.player > * {
+  background: var(--dark-1);
+}
+
+.player__name {
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.player__score {
+  display: flex;
+  padding: 0 0.8rem;
+  align-items: center;
+  background: none;
+  border-left: 1px solid var(--dark);
+}
+
+.connectors-r1,
+.connectors-r2,
+.connectors-r3 { 
+  width: 20px;
+  z-index: 2;
+}
+
+.connectors-r1 div,
+.connectors-r2 div,
+.connectors-r3 div {
+  border: 1px solid var(--light); 
+  border-left: none; 
+  width: 100%; 
+}
+
+.connectors-r1 div { 
+  height: 6.4rem; 
+  margin: 2.3rem 0 6.5rem 0;
+}
+
+.connectors-r2 div { 
+  height: 12.5rem; 
+  margin: 5.5rem 0 12.7rem 0;
+}
+
+.connectors-r3 div { 
+  height: 25rem; 
+  margin: 12rem 0 25rem 0;
+}
+
+.lines-r1, 
+.lines-r2,
+.lines-r3 { 
+  width: 20px;
+  z-index: 1;
+}
+
+.lines-r1 div,
+.lines-r2 div,
+.lines-r3 div {
+  border-top: 1px solid var(--light);
+  height: 6.4rem; 
+  width: 100%; 
+}
+
+.lines-r1 div { 
+  margin: 5.5rem 0 6.5rem 0;
+}
+
+.lines-r2 div {   
+  margin: 12rem 0 18.6rem 0;
+}
+
+.lines-r3 div { 
+  margin: 24.5rem 0 44rem 0;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.hidden {
+  display: none;
+}

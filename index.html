@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/base.css">
+    <title>Bracketour</title>
+</head>
+<body>
+  <div class="app">
+    <div class="app__title">
+      <h1 class="main__title">Bracketour</h1>
+      <h4 class="sub__title">Create brackets for tournament</h4>
+    </div>
+    <form id="participant-form" class="participant-form">
+      <label for="participant-input">Enter the number of participants</label>
+      <input id="participant-input" class="form__input" type="text" placeholder="2">
+      <div class="constraints">
+        <h4 class="min">min: 2</h4>
+        <h4 class="max">max: 50</h4>
+      </div>
+      <button disabled id="submit-btn" type="submit" class="btn submit__btn disabled">Generate</button>
+    </form>
+    <div class="buttons">
+      <button id="edit-btn" class="btn btn--outline hidden">
+        Edit Bracket
+      </button>
+      <button id="next-round" class="btn hidden">
+        Next round
+      </button>
+    </div>
+    <div id="brackets" class="brackets hidden">
+      <div id="players-r1" class="players-r1">
+      </div>
+      <div id="connectors-r1" class="connectors-r1">
+      </div>
+      <div id="lines-r1" class="lines-r1">
+      </div>
+      <div id="players-r2" class="players-r2">
+      </div>
+      <div id="connectors-r2" class="connectors-r2">
+      </div>
+      <div id="lines-r2" class="lines-r2">
+      </div>
+      <div id="players-r3" class="players-r3">
+      </div>
+      <div id="connectors-r3" class="connectors-r3">
+      </div>
+      <div id="lines-r3" class="lines-r3">
+      </div>
+    </div>
+    
+  </div>
+  <script src="./js/main.js" type="module"></script>
+  <script src="./js/form.js" type="module"></script>
+</body>
+</html>
