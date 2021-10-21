@@ -169,6 +169,38 @@ input.danger {
   margin-bottom: 20.5rem;
 }
 
+.players-r4 {
+  margin-top: 22.3rem;
+}
+
+.players-r4 .player:nth-child(2n) {
+  margin-bottom: 46rem;
+}
+
+.players-r5 {
+  margin-top: 47.7rem;
+}
+
+.players-r5 .player:nth-child(2n) {
+  margin-bottom: 92rem;
+}
+
+.players-r6 {
+  margin-top: 12rem;
+}
+
+.players-r6 .player:nth-child(2n) {
+  margin-bottom: 20.5rem;
+}
+
+.players-r7 {
+  margin-top: 12rem;
+}
+
+.players-r7 .player:nth-child(2n) {
+  margin-bottom: 20.5rem;
+}
+
 .player {
   display: flex;
   justify-content: space-between;
@@ -204,14 +236,20 @@ input.danger {
 
 .connectors-r1,
 .connectors-r2,
-.connectors-r3 { 
+.connectors-r3,
+.connectors-r4,
+.connectors-r5,
+.connectors-r6    { 
   width: 20px;
   z-index: 2;
 }
 
 .connectors-r1 div,
 .connectors-r2 div,
-.connectors-r3 div {
+.connectors-r3 div,
+.connectors-r4 div,
+.connectors-r5 div,
+.connectors-r6 div {
   border: 1px solid var(--light); 
   border-left: none; 
   width: 100%; 
@@ -232,16 +270,37 @@ input.danger {
   margin: 12rem 0 25rem 0;
 }
 
+.connectors-r4 div { 
+  height: 50.5rem; 
+  margin: 24.7rem 0 50rem 0;
+}
+
+.connectors-r5 div { 
+  height: 25rem; 
+  margin: 12rem 0 25rem 0;
+}
+
+.connectors-r6 div { 
+  height: 25rem; 
+  margin: 12rem 0 25rem 0;
+}
+
 .lines-r1, 
 .lines-r2,
-.lines-r3 { 
+.lines-r3,
+.lines-r4,
+.lines-r5,
+.lines-r6 { 
   width: 20px;
   z-index: 1;
 }
 
 .lines-r1 div,
 .lines-r2 div,
-.lines-r3 div {
+.lines-r3 div,
+.lines-r4 div,
+.lines-r5 div,
+.lines-r6 div {
   border-top: 1px solid var(--light);
   height: 6.4rem; 
   width: 100%; 
@@ -256,6 +315,18 @@ input.danger {
 }
 
 .lines-r3 div { 
+  margin: 24.5rem 0 44rem 0;
+}
+
+.lines-r4 div { 
+  margin: 50rem 0 90rem 0;
+}
+
+.lines-r5 div { 
+  margin: 24.5rem 0 44rem 0;
+}
+
+.lines-r6 div { 
   margin: 24.5rem 0 44rem 0;
 }
 
