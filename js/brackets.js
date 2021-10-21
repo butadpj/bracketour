@@ -160,6 +160,10 @@ const getFinalWinner = (roundPlayers) => {
       .querySelector('.player__name')
       .textContent
     )
+    
+    finalWinner.classList.add('winner');
+    finalWinner.querySelector('.player__name').classList.add('winner');
+
     finalWinner
       .querySelector('.player__score')
       .textContent = 'W';
@@ -275,6 +279,7 @@ editBracketButton.addEventListener('click', () => {
   round4Players.innerHTML = '';
   round5Players.innerHTML = '';
   round6Players.innerHTML = '';
+  round7Players.innerHTML = '';
 
   round1Connectors.innerHTML = '';
   round2Connectors.innerHTML = '';
@@ -303,7 +308,7 @@ nextRoundButton.addEventListener('click', () => {
 
     advanceWinnersToNextRound(round1Winners, round1Lines, round2Players);
 
-    populateContainerWithConnectors(round1Players.childElementCount / 4, round1Connectors);
+    populateContainerWithConnectors(round1Players.childElementCount / 2, round1Connectors);
     populateContainerWithLines(round1Players.childElementCount / 4, round1Lines); 
 
     // Reduce the player groupings by half
@@ -317,7 +322,7 @@ nextRoundButton.addEventListener('click', () => {
 
     advanceWinnersToNextRound(round2Winners, round2Lines, round3Players);
 
-    populateContainerWithConnectors(round2Players.childElementCount / 4, round2Connectors);
+    populateContainerWithConnectors(round2Players.childElementCount / 2, round2Connectors);
     populateContainerWithLines(round2Players.childElementCount / 4, round2Lines); 
 
     // Reduce the player groupings by half
@@ -331,7 +336,7 @@ nextRoundButton.addEventListener('click', () => {
 
     advanceWinnersToNextRound(round3Winners, round3Lines, round4Players);
 
-    populateContainerWithConnectors(round3Players.childElementCount / 4, round3Connectors);
+    populateContainerWithConnectors(round3Players.childElementCount / 2, round3Connectors);
     populateContainerWithLines(round3Players.childElementCount / 4, round3Lines); 
 
     // Reduce the player groupings by half
@@ -345,7 +350,7 @@ nextRoundButton.addEventListener('click', () => {
 
     advanceWinnersToNextRound(round4Winners, round4Lines, round5Players);
 
-    populateContainerWithConnectors(round4Players.childElementCount / 4, round4Connectors);
+    populateContainerWithConnectors(round4Players.childElementCount / 2, round4Connectors);
     populateContainerWithLines(round4Players.childElementCount / 4, round4Lines); 
 
     // Reduce the player groupings by half
@@ -357,9 +362,9 @@ nextRoundButton.addEventListener('click', () => {
   if (nextRoundButtonState === 5) {
     const round5Winners = getRoundWinners(round5Players, playersGroupCount);
 
-    advanceWinnersToNextRound(round5Winners, round4Lines, round6Players);
+    advanceWinnersToNextRound(round5Winners, round5Lines, round6Players);
 
-    populateContainerWithConnectors(round5Players.childElementCount / 4, round5Connectors);
+    populateContainerWithConnectors(round5Players.childElementCount / 2, round5Connectors);
     populateContainerWithLines(round5Players.childElementCount / 4, round5Lines);  
 
     // Reduce the player groupings by half
@@ -371,9 +376,9 @@ nextRoundButton.addEventListener('click', () => {
   if (nextRoundButtonState === 6) {
     const round6Winners = getRoundWinners(round6Players, playersGroupCount);
 
-    advanceWinnersToNextRound(round6Winners, round4Lines, round7Players);
+    advanceWinnersToNextRound(round6Winners, round6Lines, round7Players);
 
-    populateContainerWithConnectors(round6Players.childElementCount / 4, round6Connectors);
+    populateContainerWithConnectors(round6Players.childElementCount / 2, round6Connectors);
     populateContainerWithLines(round6Players.childElementCount / 4, round6Lines); 
 
     // Reduce the player groupings by half
