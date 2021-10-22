@@ -71,22 +71,19 @@ const createBracketsFromRandomNames = (playersCount) => {
 };
 
 const populateContainerWithRandomPlayers = (count, container) => {
-  const uniqueNumbers = new Set();
+  const uniqueNames = new Set();
+  let randomName;
 
-  for (let i = 0; i < count; i++) {
-    let randomIndex = getRandomIndexFrom(names);
-    let randomName = names[randomIndex];
+  // Getting unique names
+  do {
+    randomName = names[getRandomIndexFrom(names)];
+    uniqueNames.add(randomName);
+  } while (uniqueNames.has(randomName) && uniqueNames.size < count);
 
-    // Generate random name again if the name has
-    // already exist in uniqueNumbers
-    if (uniqueNumbers.has(randomIndex)) {
-      randomIndex = getRandomIndexFrom(names);
-      randomName = names[randomIndex];
-    }
-    uniqueNumbers.add(randomIndex);
-
-    container.appendChild(createPlayerElement(randomName, 0));
-  }
+  // Using unique names
+  uniqueNames.forEach((value) => {
+    container.appendChild(createPlayerElement({ name: value, score: 0 }));
+  });
 };
 
 const populateContainerWithConnectors = (count, container) => {
@@ -103,7 +100,7 @@ const populateContainerWithLines = (count, container) => {
   }
 };
 
-const createPlayerElement = (name, score) => {
+const createPlayerElement = ({ name, score }) => {
   const player = document.createElement('div');
   player.classList.add('player');
 
@@ -123,9 +120,8 @@ const getWinnersFromGroupedArray = (groupedArray) => {
     return array[0];
   };
 
-  groupedArray.map((group) => {
+  groupedArray.forEach((group) => {
     let winner = selectRandomWinner(group);
-
     winner.querySelector('.player__score').textContent = randomNumberBetween(
       2,
       3,
@@ -134,7 +130,7 @@ const getWinnersFromGroupedArray = (groupedArray) => {
 
     // Loop through [div.player, div.player]
     // The element that still has score of 0 is the loser
-    group.map((element) => {
+    group.forEach((element) => {
       const score = element.querySelector('.player__score').textContent;
       if (score == 0) {
         const loser = element;
