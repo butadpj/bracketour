@@ -1,0 +1,773 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`main.js 
+      add class "apply-shake" to max constriant 
+      element if input is higher than MAX constant, and
+      remove it after n second(s)
+     1`] = `
+<body>
+  
+      
+  <input
+    class="form__input danger"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min apply-shake"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn disabled"
+    disabled=""
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js 
+      add class "apply-shake" to min constriant 
+      element if input is below MIN constant, and
+      remove it after n second(s)
+     1`] = `
+<body>
+  
+      
+  <input
+    class="form__input danger"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min apply-shake"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn disabled"
+    disabled=""
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js add class "danger" to input if the input is invalid 1`] = `
+<body>
+  
+      
+  <input
+    class="form__input danger"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn disabled"
+    disabled=""
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js add class "danger" to input if the input is invalid 2`] = `
+<body>
+  
+      
+  <input
+    class="form__input danger"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn disabled"
+    disabled=""
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js add class "danger" to input if the input is invalid 3`] = `
+<body>
+  
+      
+  <input
+    class="form__input success"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn"
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js add class "danger" to input if the input is invalid 4`] = `
+<body>
+  
+      
+  <input
+    class="form__input success"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn"
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js add class "success" to input if the input is valid 1`] = `
+<body>
+  
+      
+  <input
+    class="form__input danger"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn disabled"
+    disabled=""
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js add class "success" to input if the input is valid 2`] = `
+<body>
+  
+      
+  <input
+    class="form__input danger"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn disabled"
+    disabled=""
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js add class "success" to input if the input is valid 3`] = `
+<body>
+  
+      
+  <input
+    class="form__input success"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn"
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js add class "success" to input if the input is valid 4`] = `
+<body>
+  
+      
+  <input
+    class="form__input success"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn"
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js button is disabled unless the input is valid 1`] = `
+<body>
+  
+      
+  <input
+    class="form__input danger"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min apply-shake"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn disabled"
+    disabled=""
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js button is disabled unless the input is valid 2`] = `
+<body>
+  
+      
+  <input
+    class="form__input danger"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min apply-shake"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn disabled"
+    disabled=""
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js button is disabled unless the input is valid 3`] = `
+<body>
+  
+      
+  <input
+    class="form__input success"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min apply-shake"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn"
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
+
+exports[`main.js button is disabled unless the input is valid 4`] = `
+<body>
+  
+      
+  <input
+    class="form__input success"
+    id="participant-input"
+    placeholder="2"
+    type="text"
+  />
+  
+      
+  <div
+    class="constraints"
+  >
+    
+        
+    <h4
+      class="min apply-shake"
+    >
+      min: 
+      <span>
+        2
+      </span>
+    </h4>
+    
+        
+    <h4
+      class="max"
+    >
+      max: 
+      <span>
+        50
+      </span>
+    </h4>
+    
+      
+  </div>
+  
+      
+  <button
+    class="btn submit__btn"
+    id="submit-btn"
+    type="submit"
+  >
+    
+        Generate
+      
+  </button>
+  
+    
+</body>
+`;
