@@ -70,7 +70,7 @@ const createBracketsFromRandomNames = (playersCount) => {
   );
 };
 
-const populateContainerWithRandomPlayers = (count, container) => {
+const getUniqueNames = (count) => {
   const uniqueNames = new Set();
   let randomName;
 
@@ -80,6 +80,12 @@ const populateContainerWithRandomPlayers = (count, container) => {
     uniqueNames.add(randomName);
   } while (uniqueNames.has(randomName) && uniqueNames.size < count);
 
+  return uniqueNames;
+}
+
+const populateContainerWithRandomPlayers = (count, container) => {
+  const uniqueNames = getUniqueNames(count);
+  
   // Using unique names
   uniqueNames.forEach((value) => {
     container.appendChild(createPlayerElement({ name: value, score: 0 }));
@@ -162,13 +168,14 @@ const getFinalWinner = (roundPlayers) => {
 
     finalWinner.querySelector('.player__score').textContent = 'W';
 
+    nextRoundButton.disabled = true;
+    nextRoundButton.classList.add('disabled');
+
     setTimeout(() => {
-      alert(`The winner of this tournament is: ${winnerName}`),
-        (nextRoundButton.disabled = true);
-      nextRoundButton.classList.add('disabled');
+      alert(`The winner of this tournament is: ${winnerName}`);
     }, 200);
   }
-  return false;
+  return
 };
 
 const advanceWinnersToNextRound = (
@@ -189,257 +196,130 @@ const advanceWinnersToNextRound = (
   // Insert container with winners next to specified element
   insertNextToThis.insertAdjacentElement('afterend', container);
 };
+
+const handleNextRoundButton = (currentRound) => {
+  const roundWinners = getRoundWinners(
+    selectRoundFromAll(currentRound, getAllRoundPlayers),
+    playersGroupCount,
+  );
+
+  advanceWinnersToNextRound(
+    roundWinners,
+    selectRoundFromAll(currentRound, getAllRoundLines),
+    selectRoundFromAll(currentRound + 1, getAllRoundPlayers),
+  );
+
+  populateContainerWithConnectors(
+    selectRoundFromAll(currentRound, getAllRoundPlayers).childElementCount / 2,
+    selectRoundFromAll(currentRound, getAllRoundConnectors),
+  );
+  
+  populateContainerWithLines(
+    selectRoundFromAll(currentRound, getAllRoundPlayers).childElementCount / 4,
+    selectRoundFromAll(currentRound, getAllRoundLines),
+  );
+
+  // Reduce the player groupings by half
+  playersGroupCount = Math.ceil(playersGroupCount / 2);
+
+  getFinalWinner(selectRoundFromAll(currentRound + 1, getAllRoundPlayers));
+} 
 //
 
-// EVENT LISTENERS
+// DOM nodes needed to be loaded first
+// For testing purposes
+window.addEventListener('load', () => {
+  // EVENT LISTENERS
 
-// hover feature start
-brackets.addEventListener('mouseover', (e) => {
-  if (e.target.classList.contains('player')) {
-    const name = e.target.firstElementChild.dataset.name;
-    const mathcedPlayers = document.querySelectorAll(`[data-name='${name}']`);
+  // hover feature start
+  brackets.addEventListener('mouseover', (e) => {
+    if (e.target.classList.contains('player')) {
+      const name = e.target.firstElementChild.dataset.name;
+      const mathcedPlayers = document.querySelectorAll(`[data-name='${name}']`);
 
-    mathcedPlayers.forEach((player) => {
-      player.closest('.player').classList.add('active');
-      player.classList.add('active');
-    });
-  }
+      mathcedPlayers.forEach((player) => {
+        player.closest('.player').classList.add('active');
+        player.classList.add('active');
+      });
+    }
 
-  if (
-    e.target.classList.contains('player__name') ||
-    e.target.classList.contains('player__score')
-  ) {
-    const name = e.target.closest('.player').firstElementChild.dataset.name;
-    const mathcedPlayers = document.querySelectorAll(`[data-name='${name}']`);
+    if (
+      e.target.classList.contains('player__name') ||
+      e.target.classList.contains('player__score')
+    ) {
+      const name = e.target.closest('.player').firstElementChild.dataset.name;
+      const mathcedPlayers = document.querySelectorAll(`[data-name='${name}']`);
 
-    mathcedPlayers.forEach((player) => {
-      player.closest('.player').classList.add('active');
-      player.classList.add('active');
-    });
-  }
-});
-
-brackets.addEventListener('mouseout', (e) => {
-  if (e.target.classList.contains('player')) {
-    const name = e.target.firstElementChild.dataset.name;
-    const mathcedPlayers = document.querySelectorAll(`[data-name='${name}']`);
-
-    mathcedPlayers.forEach((player) => {
-      player.closest('.player').classList.remove('active');
-      player.classList.remove('active');
-    });
-  }
-
-  if (
-    e.target.classList.contains('player__name') ||
-    e.target.classList.contains('player__score')
-  ) {
-    const name = e.target.closest('.player').firstElementChild.dataset.name;
-    const mathcedPlayers = document.querySelectorAll(`[data-name='${name}']`);
-
-    mathcedPlayers.forEach((player) => {
-      player.closest('.player').classList.remove('active');
-      player.classList.remove('active');
-    });
-  }
-});
-// hover feature end
-
-// edit bracket feature start
-editBracketButton.addEventListener('click', () => {
-  participantForm.classList.remove('hidden');
-  editBracketButton.classList.add('hidden');
-  brackets.classList.add('hidden');
-  nextRoundButton.classList.add('hidden');
-
-  getAllRoundPlayers().forEach((roundPlayers) => {
-    roundPlayers.innerHTML = '';
+      mathcedPlayers.forEach((player) => {
+        player.closest('.player').classList.add('active');
+        player.classList.add('active');
+      });
+    }
   });
 
-  getAllRoundConnectors().forEach((roundConnectors) => {
-    roundConnectors.innerHTML = '';
+  brackets.addEventListener('mouseout', (e) => {
+    if (e.target.classList.contains('player')) {
+      const name = e.target.firstElementChild.dataset.name;
+      const mathcedPlayers = document.querySelectorAll(`[data-name='${name}']`);
+
+      mathcedPlayers.forEach((player) => {
+        player.closest('.player').classList.remove('active');
+        player.classList.remove('active');
+      });
+    }
+
+    if (
+      e.target.classList.contains('player__name') ||
+      e.target.classList.contains('player__score')
+    ) {
+      const name = e.target.closest('.player').firstElementChild.dataset.name;
+      const mathcedPlayers = document.querySelectorAll(`[data-name='${name}']`);
+
+      mathcedPlayers.forEach((player) => {
+        player.closest('.player').classList.remove('active');
+        player.classList.remove('active');
+      });
+    }
   });
+  // hover feature end
 
-  getAllRoundLines().forEach((roundLines) => {
-    roundLines.innerHTML = '';
+  // edit bracket feature start
+  editBracketButton.addEventListener('click', () => {
+    participantForm.classList.remove('hidden');
+    editBracketButton.classList.add('hidden');
+    brackets.classList.add('hidden');
+    nextRoundButton.classList.add('hidden');
+
+    getAllRoundPlayers().forEach((roundPlayers) => {
+      roundPlayers.innerHTML = '';
+    });
+
+    getAllRoundConnectors().forEach((roundConnectors) => {
+      roundConnectors.innerHTML = '';
+    });
+
+    getAllRoundLines().forEach((roundLines) => {
+      roundLines.innerHTML = '';
+    });
+
+    nextRoundButtonState = 1;
+    nextRoundButton.disabled = false;
+    nextRoundButton.classList.remove('disabled');
   });
+  // edit bracket feature end
 
-  nextRoundButtonState = 1;
-  nextRoundButton.disabled = false;
-  nextRoundButton.classList.remove('disabled');
+  // next round feature start
+  nextRoundButton.addEventListener('click', () => {
+    handleNextRoundButton(nextRoundButtonState);
+    nextRoundButtonState++;
+  });
+  // next round feature end
 });
-// edit bracket feature end
-
-// next round feature start
-nextRoundButton.addEventListener('click', () => {
-  if (nextRoundButtonState === 1) {
-    const round1Winners = getRoundWinners(
-      selectRoundFromAll(1, getAllRoundPlayers),
-      playersGroupCount,
-    );
-
-    advanceWinnersToNextRound(
-      round1Winners,
-      selectRoundFromAll(1, getAllRoundLines),
-      selectRoundFromAll(2, getAllRoundPlayers),
-    );
-
-    populateContainerWithConnectors(
-      selectRoundFromAll(1, getAllRoundPlayers).childElementCount / 2,
-      selectRoundFromAll(1, getAllRoundConnectors),
-    );
-    populateContainerWithLines(
-      selectRoundFromAll(1, getAllRoundPlayers).childElementCount / 4,
-      selectRoundFromAll(1, getAllRoundLines),
-    );
-
-    // Reduce the player groupings by half
-    playersGroupCount = Math.ceil(playersGroupCount / 2);
-
-    getFinalWinner(selectRoundFromAll(2, getAllRoundPlayers));
-  }
-
-  if (nextRoundButtonState === 2) {
-    const round2Winners = getRoundWinners(
-      selectRoundFromAll(2, getAllRoundPlayers),
-      playersGroupCount,
-    );
-
-    advanceWinnersToNextRound(
-      round2Winners,
-      selectRoundFromAll(2, getAllRoundLines),
-      selectRoundFromAll(3, getAllRoundPlayers),
-    );
-
-    populateContainerWithConnectors(
-      selectRoundFromAll(2, getAllRoundPlayers).childElementCount / 2,
-      selectRoundFromAll(2, getAllRoundConnectors),
-    );
-    populateContainerWithLines(
-      selectRoundFromAll(2, getAllRoundPlayers).childElementCount / 4,
-      selectRoundFromAll(2, getAllRoundLines),
-    );
-
-    // Reduce the player groupings by half
-    playersGroupCount = Math.ceil(playersGroupCount / 2);
-
-    getFinalWinner(selectRoundFromAll(3, getAllRoundPlayers));
-  }
-
-  if (nextRoundButtonState === 3) {
-    const round3Winners = getRoundWinners(
-      selectRoundFromAll(3, getAllRoundPlayers),
-      playersGroupCount,
-    );
-
-    advanceWinnersToNextRound(
-      round3Winners,
-      selectRoundFromAll(3, getAllRoundLines),
-      selectRoundFromAll(4, getAllRoundPlayers),
-    );
-
-    populateContainerWithConnectors(
-      selectRoundFromAll(3, getAllRoundPlayers).childElementCount / 2,
-      selectRoundFromAll(3, getAllRoundConnectors),
-    );
-    populateContainerWithLines(
-      selectRoundFromAll(3, getAllRoundPlayers).childElementCount / 4,
-      selectRoundFromAll(3, getAllRoundLines),
-    );
-
-    // Reduce the player groupings by half
-    playersGroupCount = Math.ceil(playersGroupCount / 2);
-
-    getFinalWinner(selectRoundFromAll(4, getAllRoundPlayers));
-  }
-
-  if (nextRoundButtonState === 4) {
-    const round4Winners = getRoundWinners(
-      selectRoundFromAll(4, getAllRoundPlayers),
-      playersGroupCount,
-    );
-
-    advanceWinnersToNextRound(
-      round4Winners,
-      selectRoundFromAll(4, getAllRoundLines),
-      selectRoundFromAll(5, getAllRoundPlayers),
-    );
-
-    populateContainerWithConnectors(
-      selectRoundFromAll(4, getAllRoundPlayers).childElementCount / 2,
-      selectRoundFromAll(4, getAllRoundConnectors),
-    );
-    populateContainerWithLines(
-      selectRoundFromAll(4, getAllRoundPlayers).childElementCount / 4,
-      selectRoundFromAll(4, getAllRoundLines),
-    );
-
-    // Reduce the player groupings by half
-    playersGroupCount = Math.ceil(playersGroupCount / 2);
-
-    getFinalWinner(selectRoundFromAll(5, getAllRoundPlayers));
-  }
-
-  if (nextRoundButtonState === 5) {
-    const round5Winners = getRoundWinners(
-      selectRoundFromAll(5, getAllRoundPlayers),
-      playersGroupCount,
-    );
-
-    advanceWinnersToNextRound(
-      round5Winners,
-      selectRoundFromAll(5, getAllRoundLines),
-      selectRoundFromAll(6, getAllRoundPlayers),
-    );
-
-    populateContainerWithConnectors(
-      selectRoundFromAll(5, getAllRoundPlayers).childElementCount / 2,
-      selectRoundFromAll(5, getAllRoundConnectors),
-    );
-    populateContainerWithLines(
-      selectRoundFromAll(5, getAllRoundPlayers).childElementCount / 4,
-      selectRoundFromAll(5, getAllRoundLines),
-    );
-
-    // Reduce the player groupings by half
-    playersGroupCount = Math.ceil(playersGroupCount / 2);
-
-    getFinalWinner(selectRoundFromAll(6, getAllRoundPlayers));
-  }
-
-  if (nextRoundButtonState === 6) {
-    const round6Winners = getRoundWinners(
-      selectRoundFromAll(6, getAllRoundPlayers),
-      playersGroupCount,
-    );
-
-    advanceWinnersToNextRound(
-      round6Winners,
-      selectRoundFromAll(6, getAllRoundLines),
-      selectRoundFromAll(7, getAllRoundPlayers),
-    );
-
-    populateContainerWithConnectors(
-      selectRoundFromAll(6, getAllRoundPlayers).childElementCount / 2,
-      selectRoundFromAll(6, getAllRoundConnectors),
-    );
-    populateContainerWithLines(
-      selectRoundFromAll(6, getAllRoundPlayers).childElementCount / 4,
-      selectRoundFromAll(6, getAllRoundLines),
-    );
-
-    // Reduce the player groupings by half
-    playersGroupCount = Math.ceil(playersGroupCount / 2);
-
-    getFinalWinner(selectRoundFromAll(7, getAllRoundPlayers));
-  }
-
-  nextRoundButtonState++;
-});
-// next round feature end
-
-// EVENT LISTENERS
 
 // EXPOSE
-export { showBrackets };
+export { 
+  showBrackets, 
+  createPlayerElement,  
+  getUniqueNames,
+};
 //
