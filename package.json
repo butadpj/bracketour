@@ -1,0 +1,29 @@
+{
+  "name": "bracketour",
+  "version": "1.0.0",
+  "type": "module",
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/butadpj/bracketour.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/butadpj/bracketour/issues"
+  },
+  "homepage": "https://gitlab.com/butadpj/bracketour#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.8",
+    "jest": "^27.3.1",
+    "jquery": "^3.6.0"
+  }
+}
